@@ -1,0 +1,5 @@
+from import_econ_data import importEconData
+from import_public_finance_data import importPublicFinanceData
+
+importEconData()
+importPublicFinanceData()

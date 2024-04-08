@@ -7,10 +7,10 @@ import glob
 from os import path
 
 NUM_COUNTRY_CODES = 188
-NUM_OF_QUERIES = 4
+NUM_OF_QUERIES = 2
 country_codes = ["Deadbeef"] * NUM_COUNTRY_CODES
 countries = ["Deadbeef"] * (NUM_COUNTRY_CODES*14)
-queries = ["SP.POP.TOTL","NY.GDP.MKTP.CD", "NY.GNP.PCAP.CD", "SL.UEM.TOTL.NE.ZS"]
+queries = ["GC.DOD.TOTL.CN","GC.DOD.TOTL.GD.ZS"]
 
 def pullCodes(country_codes):
     with open('country_code.csv', newline='') as csvfile:
@@ -38,17 +38,14 @@ def updatedata(country_codes, countries, query):
 
 def exportData(countries):
     i = 0
-    with open('countryEconData.csv', 'w') as csvfile:
+    with open('countryFinanceData.csv', 'w') as csvfile:
         dataWriter = csv.writer(csvfile)
-        dataWriter.writerow(['Country, Population, Year, GDP, GDP/C, Uemployment Rate'])
+        dataWriter.writerow(['Copountry, Public Debt, Year, Public Debt/GDP'])
         while i<(NUM_COUNTRY_CODES*14):
             dataWriter.writerow([countries[i]])
             i+=1
 
-
-
-def importEconData():
-    print("Pulling Country Codes....")
+def importPublicFinanceData():
     pullCodes(country_codes)
     i = 0
     while i<NUM_OF_QUERIES:
