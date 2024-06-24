@@ -38,14 +38,12 @@ def updatedata(country_codes, countries, query):
 
 def exportData(countries):
     i = 0
-    with open('countryEconData.csv', 'w') as csvfile:
-        dataWriter = csv.writer(csvfile)
+    with open('countryEconData.csv', 'w+', newline='') as csvfile:
+        dataWriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
         dataWriter.writerow(['Country, Population, Year, GDP, GDP/C, Uemployment Rate'])
         while i<(NUM_COUNTRY_CODES*14):
             dataWriter.writerow([countries[i]])
             i+=1
-
-
 
 def importEconData():
     print("Pulling Country Codes....")

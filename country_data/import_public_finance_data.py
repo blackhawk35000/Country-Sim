@@ -38,8 +38,8 @@ def updatedata(country_codes, countries, query):
 
 def exportData(countries):
     i = 0
-    with open('countryFinanceData.csv', 'w') as csvfile:
-        dataWriter = csv.writer(csvfile)
+    with open('countryFinanceData.csv', 'w', newline='') as csvfile:
+        dataWriter = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
         dataWriter.writerow(['Copountry, Public Debt, Year, Public Debt/GDP'])
         while i<(NUM_COUNTRY_CODES*14):
             dataWriter.writerow([countries[i]])
